@@ -11,6 +11,7 @@
 		4A9B0C192960094C00257186 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9B0C182960094C00257186 /* MainView.swift */; };
 		4A9B0C1B2960094D00257186 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A9B0C1A2960094D00257186 /* Assets.xcassets */; };
 		4A9B0C1E2960094D00257186 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A9B0C1D2960094D00257186 /* Preview Assets.xcassets */; };
+		4A9B0C252960137A00257186 /* SecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9B0C242960137A00257186 /* SecondView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		4A9B0C182960094C00257186 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		4A9B0C1A2960094D00257186 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4A9B0C1D2960094D00257186 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4A9B0C242960137A00257186 /* SecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				4A9B0C162960094C00257186 /* MapAppApp.swift */,
 				4A9B0C182960094C00257186 /* MainView.swift */,
+				4A9B0C242960137A00257186 /* SecondView.swift */,
 				4A9B0C1A2960094D00257186 /* Assets.xcassets */,
 				4A9B0C1C2960094D00257186 /* Preview Content */,
 			);
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A9B0C252960137A00257186 /* SecondView.swift in Sources */,
 				4A9B0C192960094C00257186 /* MainView.swift in Sources */,
 				4A9B0C172960094C00257186 /* MapAppApp.swift in Sources */,
 			);
