@@ -10,6 +10,9 @@
 		4A98E51D296D079D00D80F82 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A98E51C296D079D00D80F82 /* Location.swift */; };
 		4A98E51F296D07A300D80F82 /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A98E51E296D07A300D80F82 /* Stop.swift */; };
 		4A98E521296D07A900D80F82 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A98E520296D07A900D80F82 /* Route.swift */; };
+		4A98E525296D094600D80F82 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A98E524296D094600D80F82 /* LocationManager.swift */; };
+		4A98E527296D094D00D80F82 /* RoutesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A98E526296D094D00D80F82 /* RoutesManager.swift */; };
+		4A98E529296D097100D80F82 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A98E528296D097100D80F82 /* NotificationManager.swift */; };
 		4A9B0C172960094C00257186 /* MapAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9B0C162960094C00257186 /* MapAppApp.swift */; };
 		4A9B0C192960094C00257186 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9B0C182960094C00257186 /* MainView.swift */; };
 		4A9B0C1B2960094D00257186 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A9B0C1A2960094D00257186 /* Assets.xcassets */; };
@@ -21,6 +24,9 @@
 		4A98E51C296D079D00D80F82 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		4A98E51E296D07A300D80F82 /* Stop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stop.swift; sourceTree = "<group>"; };
 		4A98E520296D07A900D80F82 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		4A98E524296D094600D80F82 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		4A98E526296D094D00D80F82 /* RoutesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesManager.swift; sourceTree = "<group>"; };
+		4A98E528296D097100D80F82 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		4A9B0C132960094C00257186 /* MapApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A9B0C162960094C00257186 /* MapAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAppApp.swift; sourceTree = "<group>"; };
 		4A9B0C182960094C00257186 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -43,6 +49,7 @@
 		4A98E51B296D078800D80F82 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4A98E523296D093900D80F82 /* Managers */,
 				4A98E522296D083400D80F82 /* Data types */,
 			);
 			path = Models;
@@ -56,6 +63,16 @@
 				4A98E520296D07A900D80F82 /* Route.swift */,
 			);
 			path = "Data types";
+			sourceTree = "<group>";
+		};
+		4A98E523296D093900D80F82 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				4A98E524296D094600D80F82 /* LocationManager.swift */,
+				4A98E526296D094D00D80F82 /* RoutesManager.swift */,
+				4A98E528296D097100D80F82 /* NotificationManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		4A9B0C0A2960094C00257186 = {
@@ -168,6 +185,9 @@
 				4A9B0C252960137A00257186 /* SecondView.swift in Sources */,
 				4A9B0C192960094C00257186 /* MainView.swift in Sources */,
 				4A98E51F296D07A300D80F82 /* Stop.swift in Sources */,
+				4A98E529296D097100D80F82 /* NotificationManager.swift in Sources */,
+				4A98E527296D094D00D80F82 /* RoutesManager.swift in Sources */,
+				4A98E525296D094600D80F82 /* LocationManager.swift in Sources */,
 				4A98E521296D07A900D80F82 /* Route.swift in Sources */,
 				4A98E51D296D079D00D80F82 /* Location.swift in Sources */,
 				4A9B0C172960094C00257186 /* MapAppApp.swift in Sources */,
