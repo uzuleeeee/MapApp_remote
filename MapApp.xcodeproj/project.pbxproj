@@ -13,11 +13,13 @@
 		4A98E525296D094600D80F82 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A98E524296D094600D80F82 /* LocationManager.swift */; };
 		4A98E527296D094D00D80F82 /* RoutesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A98E526296D094D00D80F82 /* RoutesManager.swift */; };
 		4A98E529296D097100D80F82 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A98E528296D097100D80F82 /* NotificationManager.swift */; };
+		4A98E52B296D0AB200D80F82 /* RouteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A98E52A296D0AB200D80F82 /* RouteView.swift */; };
+		4A98E52D296D0D0900D80F82 /* StopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A98E52C296D0D0900D80F82 /* StopView.swift */; };
+		4A98E52F296D16A700D80F82 /* RouteEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A98E52E296D16A700D80F82 /* RouteEditView.swift */; };
 		4A9B0C172960094C00257186 /* MapAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9B0C162960094C00257186 /* MapAppApp.swift */; };
 		4A9B0C192960094C00257186 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9B0C182960094C00257186 /* MainView.swift */; };
 		4A9B0C1B2960094D00257186 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A9B0C1A2960094D00257186 /* Assets.xcassets */; };
 		4A9B0C1E2960094D00257186 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A9B0C1D2960094D00257186 /* Preview Assets.xcassets */; };
-		4A9B0C252960137A00257186 /* SecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9B0C242960137A00257186 /* SecondView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,12 +29,14 @@
 		4A98E524296D094600D80F82 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		4A98E526296D094D00D80F82 /* RoutesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesManager.swift; sourceTree = "<group>"; };
 		4A98E528296D097100D80F82 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		4A98E52A296D0AB200D80F82 /* RouteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteView.swift; sourceTree = "<group>"; };
+		4A98E52C296D0D0900D80F82 /* StopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopView.swift; sourceTree = "<group>"; };
+		4A98E52E296D16A700D80F82 /* RouteEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteEditView.swift; sourceTree = "<group>"; };
 		4A9B0C132960094C00257186 /* MapApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A9B0C162960094C00257186 /* MapAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAppApp.swift; sourceTree = "<group>"; };
 		4A9B0C182960094C00257186 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		4A9B0C1A2960094D00257186 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4A9B0C1D2960094D00257186 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		4A9B0C242960137A00257186 /* SecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,8 +53,8 @@
 		4A98E51B296D078800D80F82 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				4A98E523296D093900D80F82 /* Managers */,
 				4A98E522296D083400D80F82 /* Data types */,
+				4A98E523296D093900D80F82 /* Managers */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -60,6 +64,7 @@
 			children = (
 				4A98E51C296D079D00D80F82 /* Location.swift */,
 				4A98E51E296D07A300D80F82 /* Stop.swift */,
+				4A98E52C296D0D0900D80F82 /* StopView.swift */,
 				4A98E520296D07A900D80F82 /* Route.swift */,
 			);
 			path = "Data types";
@@ -97,7 +102,8 @@
 				4A98E51B296D078800D80F82 /* Models */,
 				4A9B0C162960094C00257186 /* MapAppApp.swift */,
 				4A9B0C182960094C00257186 /* MainView.swift */,
-				4A9B0C242960137A00257186 /* SecondView.swift */,
+				4A98E52A296D0AB200D80F82 /* RouteView.swift */,
+				4A98E52E296D16A700D80F82 /* RouteEditView.swift */,
 				4A9B0C1A2960094D00257186 /* Assets.xcassets */,
 				4A9B0C1C2960094D00257186 /* Preview Content */,
 			);
@@ -182,7 +188,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A9B0C252960137A00257186 /* SecondView.swift in Sources */,
+				4A98E52F296D16A700D80F82 /* RouteEditView.swift in Sources */,
 				4A9B0C192960094C00257186 /* MainView.swift in Sources */,
 				4A98E51F296D07A300D80F82 /* Stop.swift in Sources */,
 				4A98E529296D097100D80F82 /* NotificationManager.swift in Sources */,
@@ -190,6 +196,8 @@
 				4A98E525296D094600D80F82 /* LocationManager.swift in Sources */,
 				4A98E521296D07A900D80F82 /* Route.swift in Sources */,
 				4A98E51D296D079D00D80F82 /* Location.swift in Sources */,
+				4A98E52B296D0AB200D80F82 /* RouteView.swift in Sources */,
+				4A98E52D296D0D0900D80F82 /* StopView.swift in Sources */,
 				4A9B0C172960094C00257186 /* MapAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
