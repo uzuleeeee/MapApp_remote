@@ -22,6 +22,12 @@ struct Route: Identifiable {
 }
 
 extension Route {
+    mutating func addStop (stop: Stop) {
+        stops.append(stop)
+    }
+}
+
+extension Route {
     static let newRoute = Route(stops: [], from: "", to: "")
     
     static let sampleRoute = Route(stops: [

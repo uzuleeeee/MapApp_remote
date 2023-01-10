@@ -15,4 +15,8 @@ class RoutesManager: ObservableObject {
         tempRoute = Route.sampleRoute
         savedRoutes = Route.sampleRoutes
     }
+    
+    func saveRoute (route: Route) {
+        savedRoutes.append(route)
+    }
 }

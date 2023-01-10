@@ -47,7 +47,7 @@ struct MainView: View {
                             }
                             ToolbarItem(placement: .confirmationAction) {
                                 Button ("Add") {
-                                    routesManager.savedRoutes.append(newRoute)
+                                    routesManager.saveRoute(route: newRoute)
                                     isShowingNewRouteView = false
                                     newRoute = Route.newRoute
                                 }

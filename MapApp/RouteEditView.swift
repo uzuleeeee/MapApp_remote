@@ -24,7 +24,8 @@ struct RouteEditView: View {
             HStack {
                 TextField("New Stop", text: $newRouteName)
                 Button {
-                    
+                    route.addStop(stop: Stop(location: Location(latitude: 0, longitude: 0), name: newRouteName))
+                    newRouteName = ""
                 } label: {
                     Image(systemName: "plus.circle.fill")
                 }
