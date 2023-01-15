@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4A4AB026297327930006A517 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4AB025297327930006A517 /* MapView.swift */; };
 		4A4AB0302973AFB80006A517 /* NewStopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4AB02F2973AFB80006A517 /* NewStopView.swift */; };
+		4A94AB7729746A74008BE786 /* SearchLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A94AB7629746A74008BE786 /* SearchLocationManager.swift */; };
 		4A98E51D296D079D00D80F82 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A98E51C296D079D00D80F82 /* Location.swift */; };
 		4A98E51F296D07A300D80F82 /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A98E51E296D07A300D80F82 /* Stop.swift */; };
 		4A98E521296D07A900D80F82 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A98E520296D07A900D80F82 /* Route.swift */; };
@@ -28,6 +29,7 @@
 		4A4AB025297327930006A517 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		4A4AB02729738F670006A517 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		4A4AB02F2973AFB80006A517 /* NewStopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewStopView.swift; sourceTree = "<group>"; };
+		4A94AB7629746A74008BE786 /* SearchLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationManager.swift; sourceTree = "<group>"; };
 		4A98E51C296D079D00D80F82 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		4A98E51E296D07A300D80F82 /* Stop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stop.swift; sourceTree = "<group>"; };
 		4A98E520296D07A900D80F82 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				4A98E524296D094600D80F82 /* LocationManager.swift */,
+				4A94AB7629746A74008BE786 /* SearchLocationManager.swift */,
 				4A98E526296D094D00D80F82 /* RoutesManager.swift */,
 				4A98E528296D097100D80F82 /* NotificationManager.swift */,
 			);
@@ -212,6 +215,7 @@
 				4A98E527296D094D00D80F82 /* RoutesManager.swift in Sources */,
 				4A98E525296D094600D80F82 /* LocationManager.swift in Sources */,
 				4A98E521296D07A900D80F82 /* Route.swift in Sources */,
+				4A94AB7729746A74008BE786 /* SearchLocationManager.swift in Sources */,
 				4A98E51D296D079D00D80F82 /* Location.swift in Sources */,
 				4A98E52B296D0AB200D80F82 /* RouteView.swift in Sources */,
 				4A98E52D296D0D0900D80F82 /* StopView.swift in Sources */,

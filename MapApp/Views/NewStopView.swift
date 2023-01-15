@@ -6,11 +6,14 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct NewStopView: View {
-    @State var locationManager = LocationManager()
+    @State private var locationManager = LocationManager()
+    @State private var searchLocationManager = SearchLocationManager()
     
     @State private var searchEntry = ""
+
     @State private var isShowingNewStopView = false
     
     var body: some View {
@@ -24,6 +27,16 @@ struct NewStopView: View {
                     .cornerRadius(30)
                     .padding(.horizontal)
                     .padding(.top)
+                ScrollView {
+                    if (!searchEntry.isEmpty && !searchLocationManager.searchedStops.isEmpty) {
+                        ForEach(searchLocationManager.searchedStops) { stop in
+                            Text(stop.name)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding()
+                                .background(.white)
+                        }
+                    }
+                }
                 Spacer()
                 HStack {
                     Spacer()
@@ -43,11 +56,18 @@ struct NewStopView: View {
                 }
             }
         }
+        .onChange(of: searchEntry) { newSearchEntry in
+            if (!searchEntry.isEmpty) {
+                searchLocationManager.searchLocation(search: newSearchEntry, in: locationManager.region)
+            } else {
+                searchLocationManager.searchedStops = []
+            }
+        }
     }
 }
 
 struct AddStopView_Previews: PreviewProvider {
     static var previews: some View {
-        NewStopView(locationManager: LocationManager())
+        NewStopView()
     }
 }
