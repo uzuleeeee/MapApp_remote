@@ -62,6 +62,8 @@ struct MainView: View {
                 }
             }
         }
+        .environmentObject(routesManager)
+        .environmentObject(locationManager)
     }
 }
 

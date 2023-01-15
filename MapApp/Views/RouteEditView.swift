@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RouteEditView: View {
     @Binding var route: Route
-    @State private var newRouteName: String = ""
+    @State private var isShowingNewStopView = false
     
     var body: some View {
         VStack {
@@ -21,17 +21,25 @@ struct RouteEditView: View {
                 Text("To: ")
                 TextField("Enter name of location", text: $route.to)
             }
-            HStack {
-                TextField("New Stop", text: $newRouteName)
-                Button {
-                    route.addStop(stop: Stop(location: Location(latitude: 0, longitude: 0), name: newRouteName))
-                    newRouteName = ""
-                } label: {
-                    Image(systemName: "plus.circle.fill")
-                }
-                .disabled(newRouteName.isEmpty)
-            }
             RouteView(route: route)
+            Button("New Stop") {
+                isShowingNewStopView = true
+            }
+        }
+        .sheet(isPresented: $isShowingNewStopView) {
+            VStack {
+                HStack {
+                    Button {
+                        isShowingNewStopView = false
+                    } label: {
+                        Text("Dismiss")
+                            .bold()
+                    }
+                    .padding(5)
+                    Spacer()
+                }
+                NewStopView()
+            }
         }
     }
 }
