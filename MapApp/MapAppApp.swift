@@ -9,9 +9,15 @@ import SwiftUI
 
 @main
 struct MapAppApp: App {
+    @StateObject private var routesManager = RoutesManager()
+    @StateObject private var locationManager = LocationManager()
+    
     var body: some Scene {
         WindowGroup {
-            MainView()
+            MainView(routesManager: routesManager, locationManager: locationManager)
+                .onAppear {
+                    locationManager.checkIfLocationServicesIsEnabled()
+                }
         }
     }
 }

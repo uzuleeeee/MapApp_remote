@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct MainView: View {
-    @StateObject private var routesManager = RoutesManager()
+    @ObservedObject var routesManager = RoutesManager()
+    @ObservedObject var locationManager = LocationManager()
     
     @State private var isShowingNewRouteView = false
     @State private var newRoute = Route.newRoute
@@ -33,6 +34,11 @@ struct MainView: View {
                     .onDelete { indicies in
                         routesManager.savedRoutes.remove(atOffsets: indicies)
                     }
+                }
+                
+                Section("Map") {
+                    MapView(locationManager: locationManager)
+                        .frame(width: 500, height: 500)
                 }
             }
             .sheet(isPresented: $isShowingNewRouteView) {
