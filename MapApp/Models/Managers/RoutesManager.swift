@@ -8,6 +8,8 @@
 import Foundation
 
 class RoutesManager: ObservableObject {
+    @Published var onRoute: Bool = false
+    
     @Published var currentRoute: Route = Route.newRoute
     @Published var tempRoute: Route = Route.newRoute
     @Published var savedRoutes: [Route] = []
@@ -15,6 +17,14 @@ class RoutesManager: ObservableObject {
     init () {
         tempRoute = Route.sampleRoute
         savedRoutes = Route.sampleRoutes
+    }
+    
+    func start () {
+        onRoute = true
+    }
+    
+    func stop () {
+        onRoute = false
     }
     
     func saveRoute (route: Route) {

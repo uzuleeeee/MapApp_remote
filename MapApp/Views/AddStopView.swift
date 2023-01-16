@@ -33,6 +33,9 @@ struct AddStopView: View {
         .if(index != 0) { view in
             view.padding(.top)
         }
+        .if(routesManager.onRoute) { view in
+            view.opacity(0)
+        }
     }
 }
 

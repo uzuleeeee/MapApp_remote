@@ -11,8 +11,8 @@ struct MainView: View {
     @ObservedObject var routesManager = RoutesManager()
     @ObservedObject var locationManager = LocationManager()
     
-    @State private var isShowingNewRouteView = false
-    @State private var newRoute = Route.newRoute
+    //@State private var isShowingNewRouteView = false
+    //@State private var newRoute = Route.newRoute
     
     var body: some View {
         NavigationView {
@@ -27,18 +27,32 @@ struct MainView: View {
                     Spacer()
                 }
                 
-                Button {
-                    
-                } label: {
-                    Text("Start")
-                        .font(.system(size: 30, weight: .semibold))
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 10)
-                        .background(routesManager.currentRoute.stops.isEmpty ? .gray.opacity(0.5) : .blue)
-                        .cornerRadius(25)
-                        .foregroundColor(.white)
+                if (!routesManager.onRoute) {
+                    Button {
+                        routesManager.start()
+                    } label: {
+                        Text("Start")
+                            .font(.system(size: 30, weight: .semibold))
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 10)
+                            .background(routesManager.currentRoute.stops.isEmpty ? .gray.opacity(0.5) : .blue)
+                            .cornerRadius(25)
+                            .foregroundColor(.white)
+                    }
+                    .disabled(routesManager.currentRoute.stops.isEmpty)
+                } else {
+                    Button {
+                        routesManager.stop()
+                    } label: {
+                        Text("End")
+                            .font(.system(size: 30, weight: .semibold))
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 10)
+                            .background(.red)
+                            .cornerRadius(25)
+                            .foregroundColor(.white)
+                    }
                 }
-                .disabled(routesManager.currentRoute.stops.isEmpty)
                 /*
                 NavigationLink(destination: SearchView()) {
                     Image(systemName: "magnifyingglass")
@@ -79,6 +93,7 @@ struct MainView: View {
                 }
             }*/
             .padding()
+            /*
             .sheet(isPresented: $isShowingNewRouteView) {
                 NavigationView {
                     RouteEditView(route: $newRoute)
@@ -99,6 +114,7 @@ struct MainView: View {
                         }
                 }
             }
+             */
             .environmentObject(routesManager)
         }
     }
