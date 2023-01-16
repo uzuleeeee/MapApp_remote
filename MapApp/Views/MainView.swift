@@ -16,14 +16,16 @@ struct MainView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
+            VStack(alignment: .leading) {
+                Text("Wake me up at...")
+                    .font(.largeTitle)
+                    .bold()
+                
                 ScrollView {
                     RouteView(route: routesManager.currentRoute)
                     AddStopView(index: routesManager.currentRoute.stops.count, routesManager: routesManager)
-                        .padding(.top)
                     Spacer()
                 }
-                .padding()
                 
                 Button {
                     
@@ -35,9 +37,8 @@ struct MainView: View {
                         .background(routesManager.currentRoute.stops.isEmpty ? .gray.opacity(0.5) : .blue)
                         .cornerRadius(25)
                         .foregroundColor(.white)
-                        .padding()
                 }
-                .disabled(routesManager.currentRoute.stops.first == Stop.newStop)
+                .disabled(routesManager.currentRoute.stops.isEmpty)
                 /*
                 NavigationLink(destination: SearchView()) {
                     Image(systemName: "magnifyingglass")
@@ -77,7 +78,7 @@ struct MainView: View {
                         .frame(width: 500, height: 500)
                 }
             }*/
-            .navigationTitle("Wake me up at...")
+            .padding()
             .sheet(isPresented: $isShowingNewRouteView) {
                 NavigationView {
                     RouteEditView(route: $newRoute)
