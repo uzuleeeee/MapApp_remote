@@ -14,54 +14,36 @@ struct StopView: View {
     
     var body: some View {
         HStack {
-            if stop == Stop.newStop {
-                NavigationLink {
-                    SearchView()
-                        .padding()
+            HStack {
+                VStack(alignment: .leading, spacing: 5) {
+                    Text(stop.name)
+                        .font(.title3)
+                        .bold()
+                    Text("0.98 km away")
+                    Spacer()
+                    
+                }
+                
+                Spacer()
+                
+                Button {
+                    isShowingMapView = true
                 } label: {
-                    Image(systemName: "plus")
+                    Image(systemName: "map")
                         .font(.title)
                         .bold()
                         .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(.ultraThickMaterial)
                         .foregroundColor(.black)
+                        .background(.white.opacity(0.75))
                         .cornerRadius(25)
                 }
-            } else {
-                HStack {
-                    HStack {
-                        VStack(alignment: .leading, spacing: 5) {
-                            Text(stop.name)
-                                .font(.title3)
-                                .bold()
-                            Text("0.98 km away")
-                            Spacer()
-                            
-                        }
-                        
-                        Spacer()
-                        
-                        Button {
-                            isShowingMapView = true
-                        } label: {
-                            Image(systemName: "map")
-                                .font(.title)
-                                .bold()
-                                .padding()
-                                .foregroundColor(.black)
-                                .background(.white.opacity(0.75))
-                                .cornerRadius(25)
-                        }
-                    }
-                    
-                    Spacer()
-                }
-                .padding()
-                .background(.ultraThickMaterial)
-                .cornerRadius(25)
             }
+            
+            Spacer()
         }
+        .padding()
+        .background(.ultraThickMaterial)
+        .cornerRadius(25)
         .sheet(isPresented: $isShowingMapView) {
             NavigationView {
                 MapView(region: stop.region, disabled: false)

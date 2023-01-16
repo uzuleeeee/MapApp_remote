@@ -10,6 +10,8 @@ import SwiftUI
 struct SearchView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
+    @ObservedObject var routesManager: RoutesManager
+    
     @State private var searchEntry = ""
     @State private var searchLocationManager = SearchLocationManager()
     @State private var locationManager = LocationManager()
@@ -30,6 +32,7 @@ struct SearchView: View {
                         HStack(spacing: 0) {
                             StopView(stop: stop)
                             Button {
+                                routesManager.addStop(stop: stop)
                                 self.presentationMode.wrappedValue.dismiss()
                             } label: {
                                 Image(systemName: "plus")
@@ -72,7 +75,7 @@ struct SearchView: View {
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            SearchView()
+            SearchView(routesManager: RoutesManager())
         }
     }
 }

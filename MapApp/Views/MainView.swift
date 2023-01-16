@@ -19,9 +19,11 @@ struct MainView: View {
             VStack {
                 ScrollView {
                     RouteView(route: routesManager.currentRoute)
-                        .padding()
+                    AddStopView(index: routesManager.currentRoute.stops.count, routesManager: routesManager)
+                        .padding(.top)
                     Spacer()
                 }
+                .padding()
                 
                 Button {
                     
@@ -30,7 +32,7 @@ struct MainView: View {
                         .font(.system(size: 30, weight: .semibold))
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 10)
-                        .background(routesManager.currentRoute.stops.first == Stop.newStop ? .gray.opacity(0.5) : .blue)
+                        .background(routesManager.currentRoute.stops.isEmpty ? .gray.opacity(0.5) : .blue)
                         .cornerRadius(25)
                         .foregroundColor(.white)
                         .padding()

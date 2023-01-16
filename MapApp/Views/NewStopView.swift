@@ -64,7 +64,7 @@ struct NewStopView: View {
     }
 }
 
-struct AddStopView_Previews: PreviewProvider {
+struct NewStopView_Previews: PreviewProvider {
     static var previews: some View {
         NewStopView()
     }

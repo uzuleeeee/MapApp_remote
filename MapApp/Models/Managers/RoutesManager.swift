@@ -20,4 +20,8 @@ class RoutesManager: ObservableObject {
     func saveRoute (route: Route) {
         savedRoutes.append(route)
     }
+    
+    func addStop (stop: Stop) {
+        currentRoute.stops.append(stop)
+    }
 }
