@@ -7,7 +7,13 @@
 
 import Foundation
 
-struct Location {
+struct Location: Equatable {
     var latitude: Double
     var longitude: Double
+}
+
+extension Location {
+    static func ==(lhs: Location, rhs: Location) -> Bool {
+        lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude
+    }
 }

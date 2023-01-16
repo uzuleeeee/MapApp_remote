@@ -8,6 +8,7 @@
 import Foundation
 
 class RoutesManager: ObservableObject {
+    @Published var currentRoute: Route = Route.newRoute
     @Published var tempRoute: Route = Route.newRoute
     @Published var savedRoutes: [Route] = []
     

@@ -18,8 +18,6 @@ struct NewStopView: View {
     
     var body: some View {
         ZStack {
-            MapView(locationManager: locationManager)
-            
             VStack {
                 TextField("Search for new stop", text: $searchEntry)
                     .padding()

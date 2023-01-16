@@ -28,11 +28,14 @@ extension Route {
 }
 
 extension Route {
-    static let newRoute = Route(stops: [], from: "", to: "")
+    static let newRoute = Route(stops: [Stop.newStop], from: "", to: "")
     
     static let sampleRoute = Route(stops: [
         Stop(location: Location(latitude: 50, longitude: 50), name: "Apple St"),
-        Stop(location: Location(latitude: 45, longitude: 45), name: "Banana St")],
+        Stop(location: Location(latitude: 50, longitude: 50), name: "Super long name very long name St"),
+        Stop(location: Location(latitude: 45, longitude: 45), name: "Banana St"),
+        Stop(location: Location(latitude: 33.781500, longitude: -84.396040), name: "10th St & Holly St"),
+        Stop.newStop],
                                   from: "Apple", to: "Banana")
     
     static let sampleRoutes = [Route(stops: [

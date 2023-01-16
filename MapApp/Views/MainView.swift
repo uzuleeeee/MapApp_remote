@@ -16,7 +16,41 @@ struct MainView: View {
     
     var body: some View {
         NavigationView {
-            List {
+            VStack {
+                ScrollView {
+                    RouteView(route: routesManager.currentRoute)
+                        .padding()
+                    Spacer()
+                }
+                
+                Button {
+                    
+                } label: {
+                    Text("Start")
+                        .font(.system(size: 30, weight: .semibold))
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 10)
+                        .background(routesManager.currentRoute.stops.first == Stop.newStop ? .gray.opacity(0.5) : .blue)
+                        .cornerRadius(25)
+                        .foregroundColor(.white)
+                        .padding()
+                }
+                .disabled(routesManager.currentRoute.stops.first == Stop.newStop)
+                /*
+                NavigationLink(destination: SearchView()) {
+                    Image(systemName: "magnifyingglass")
+                        .cornerRadius(50)
+                        .font(.system(size: 30, weight: .semibold))
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 10)
+                        .background(.blue)
+                        .cornerRadius(25)
+                        .foregroundColor(.white)
+                        .padding()
+                }
+                */
+            }
+            /*List {
                 Section("On-the-go Route") {
                     RouteEditView(route: $routesManager.tempRoute)
                 }
@@ -40,7 +74,8 @@ struct MainView: View {
                     MapView(locationManager: locationManager)
                         .frame(width: 500, height: 500)
                 }
-            }
+            }*/
+            .navigationTitle("Wake me up at...")
             .sheet(isPresented: $isShowingNewRouteView) {
                 NavigationView {
                     RouteEditView(route: $newRoute)
@@ -61,9 +96,8 @@ struct MainView: View {
                         }
                 }
             }
+            .environmentObject(routesManager)
         }
-        .environmentObject(routesManager)
-        .environmentObject(locationManager)
     }
 }
 

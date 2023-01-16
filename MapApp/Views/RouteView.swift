@@ -11,12 +11,15 @@ struct RouteView: View {
     let route: Route
     
     var body: some View {
-        VStack {
-            Text("From: \(route.from), to: \(route.to)")
-                .bold()
-                .padding(.bottom, 0.7)
+        VStack(spacing: 20) {
             ForEach(route.stops) { stop in
-                StopView(stop: stop)
+                let index = route.stops.firstIndex(of: stop) ?? -1
+                
+                HStack {
+                    Image(systemName: "\(index+1).circle.fill")
+                        .font(.largeTitle)
+                    StopView(stop: stop)
+                }
             }
         }
     }
@@ -24,8 +27,6 @@ struct RouteView: View {
 
 struct RouteView_Previews: PreviewProvider {
     static var previews: some View {
-        List {
-            RouteView(route: Route.sampleRoute)
-        }
+        RouteView(route: Route.sampleRoute)
     }
 }

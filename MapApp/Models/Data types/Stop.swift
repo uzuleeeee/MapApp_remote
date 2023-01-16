@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import MapKit
 
-struct Stop: Identifiable {
+struct Stop: Identifiable, Equatable {
     let id: UUID
     var location: Location
     var name: String
@@ -20,5 +21,17 @@ struct Stop: Identifiable {
 }
 
 extension Stop {
-    static let sampleStop = Stop(location: Location(latitude: 10, longitude: 20), name: "Sample stop")
+    var region: MKCoordinateRegion {
+        MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+    }
+    
+    static func ==(lhs: Stop, rhs: Stop) -> Bool {
+        lhs.location == rhs.location && lhs.name == rhs.name
+    }
+}
+
+extension Stop {
+    static let newStop = Stop(location: Location(latitude: 0, longitude: 0), name: "New stop")
+    
+    static let sampleStop = Stop(location: Location(latitude: 33.781500, longitude: -84.396040), name: "10th St & Holly St")
 }
