@@ -12,7 +12,7 @@ struct SimpleRouteView: View {
     let zoom: (_ stop: Stop) -> Void
     
     var body: some View {
-        VStack {
+        VStack (spacing: 0) {
             Image(systemName: "bus.fill")
                 .font(.largeTitle)
                 .bold()
@@ -21,7 +21,7 @@ struct SimpleRouteView: View {
                 Rectangle()
                     .frame(height: 10)
                     .foregroundColor(.black.opacity(1.0))
-                    .padding()
+                    .padding(.horizontal)
                 
                 HStack {
                     Image(systemName: "circle.fill")
