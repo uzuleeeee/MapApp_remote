@@ -10,7 +10,7 @@ import Foundation
 class RoutesManager: ObservableObject {
     @Published var onRoute: Bool = false
     
-    @Published var currentRoute: Route = Route.newRoute
+    @Published var currentRoute: Route = Route.sampleRoute
     @Published var tempRoute: Route = Route.newRoute
     @Published var savedRoutes: [Route] = []
     

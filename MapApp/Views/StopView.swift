@@ -11,6 +11,7 @@ struct StopView: View {
     let stop: Stop
 
     @State private var isShowingMapView = false
+    @State var showMapButton: Bool = true
     
     var body: some View {
         HStack {
@@ -26,16 +27,18 @@ struct StopView: View {
                 
                 Spacer()
                 
-                Button {
-                    isShowingMapView = true
-                } label: {
-                    Image(systemName: "map")
-                        .font(.title)
-                        .bold()
-                        .padding()
-                        .foregroundColor(.black)
-                        .background(.white.opacity(0.75))
-                        .cornerRadius(25)
+                if (showMapButton) {
+                    Button {
+                        isShowingMapView = true
+                    } label: {
+                        Image(systemName: "map")
+                            .font(.title)
+                            .bold()
+                            .padding()
+                            .foregroundColor(.black)
+                            .background(.white.opacity(0.75))
+                            .cornerRadius(25)
+                    }
                 }
             }
             

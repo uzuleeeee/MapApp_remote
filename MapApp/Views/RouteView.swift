@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RouteView: View {
     let route: Route
+    @State var showMapButton: Bool = true
     
     var body: some View {
         VStack(spacing: 20) {
@@ -18,7 +19,7 @@ struct RouteView: View {
                 HStack {
                     Image(systemName: "\(index+1).circle.fill")
                         .font(.largeTitle)
-                    StopView(stop: stop)
+                    StopView(stop: stop, showMapButton: showMapButton)
                 }
             }
         }
