@@ -9,6 +9,8 @@ import SwiftUI
 import MapKit
 
 struct TripView: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
     @ObservedObject var routesManager: RoutesManager
     @ObservedObject var locationManager: LocationManager
     
@@ -19,13 +21,14 @@ struct TripView: View {
             })
             .padding(.bottom)
             
-            ScrollView {
+            if (routesManager.currentRoute.stops.count < 3) {
                 RouteView(route: routesManager.currentRoute, showMapButton: false)
+            } else {
+                ScrollView {
+                    RouteView(route: routesManager.currentRoute, showMapButton: false)
+                }
+                .scrollIndicators(.hidden)
             }
-            .scrollIndicators(.hidden)
-            .frame(height: 200)
-            
-            Spacer()
             
             Map(coordinateRegion: $locationManager.region, showsUserLocation: true, annotationItems: routesManager.currentRoute.stops) { stop in
                 MapMarker(coordinate: CLLocationCoordinate2D(latitude: stop.location.latitude, longitude: stop.location.longitude))
@@ -35,6 +38,7 @@ struct TripView: View {
             
             Button {
                 routesManager.stop()
+                self.presentationMode.wrappedValue.dismiss()
             } label: {
                 Text("End")
                     .font(.system(size: 30, weight: .semibold))
@@ -44,6 +48,7 @@ struct TripView: View {
                     .cornerRadius(25)
                     .foregroundColor(.white)
             }
+            .padding(.top)
         }
         .padding(.horizontal)
     }

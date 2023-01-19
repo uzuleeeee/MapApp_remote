@@ -26,7 +26,32 @@ struct MainView: View {
                     AddStopView(index: routesManager.currentRoute.stops.count, routesManager: routesManager)
                     Spacer()
                 }
+                .scrollIndicators(.hidden)
                 
+                NavigationLink {
+                    VStack {
+                        TripView(routesManager: routesManager, locationManager: locationManager)
+                            .navigationBarBackButtonHidden()
+                            .navigationTitle("")
+                            .navigationBarTitleDisplayMode(.inline)
+                            .padding()
+                    }
+                } label: {
+                    Text("Start")
+                        .font(.system(size: 30, weight: .semibold))
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 10)
+                        .background(routesManager.currentRoute.stops.isEmpty ? .gray.opacity(0.5) : .blue)
+                        .cornerRadius(25)
+                        .foregroundColor(.white)
+                        .padding(.top)
+                }
+                .simultaneousGesture(TapGesture().onEnded{
+                    routesManager.start()
+                })
+                .disabled(routesManager.currentRoute.stops.isEmpty)
+                
+                /*
                 if (!routesManager.onRoute) {
                     Button {
                         routesManager.start()
@@ -53,6 +78,7 @@ struct MainView: View {
                             .foregroundColor(.white)
                     }
                 }
+                 */
                 /*
                 NavigationLink(destination: SearchView()) {
                     Image(systemName: "magnifyingglass")

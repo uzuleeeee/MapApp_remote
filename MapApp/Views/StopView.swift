@@ -21,8 +21,6 @@ struct StopView: View {
                         .font(.title3)
                         .bold()
                     Text("0.98 km away")
-                    Spacer()
-                    
                 }
                 
                 Spacer()
