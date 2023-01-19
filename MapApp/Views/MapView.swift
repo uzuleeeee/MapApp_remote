@@ -10,21 +10,18 @@ import MapKit
 
 struct MapView: View {
     @State var region: MKCoordinateRegion
-    @EnvironmentObject var routesManager: RoutesManager
-    
-    @State var disabled: Bool = false
+    let route: [Stop]
     
     var body: some View {
-        Map(coordinateRegion: $region, showsUserLocation: true, annotationItems: Route.sampleRoute.stops) { stop in
+        Map(coordinateRegion: $region, showsUserLocation: true, annotationItems: route) { stop in
             MapMarker(coordinate: CLLocationCoordinate2D(latitude: stop.location.latitude, longitude: stop.location.longitude))
         }
         .ignoresSafeArea()
-        .disabled(disabled)
     }
 }
 
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
-        MapView(region: Stop.sampleStop.region)
+        MapView(region: Stop.sampleStop.region, route: Route.sampleRoute.stops)
     }
 }

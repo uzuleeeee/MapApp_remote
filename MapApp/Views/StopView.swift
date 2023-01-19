@@ -9,6 +9,7 @@ import SwiftUI
 
 struct StopView: View {
     let stop: Stop
+    @State var distance: Double
 
     @State private var isShowingMapView = false
     @State var showMapButton: Bool = true
@@ -20,7 +21,7 @@ struct StopView: View {
                     Text(stop.name)
                         .font(.title3)
                         .bold()
-                    Text("0.98 km away")
+                    Text(String(format: "%0.02f km away", distance))
                 }
                 
                 Spacer()
@@ -47,7 +48,7 @@ struct StopView: View {
         .cornerRadius(25)
         .sheet(isPresented: $isShowingMapView) {
             NavigationView {
-                MapView(region: stop.region, disabled: false)
+                MapView(region: stop.region, route: [stop])
                     .toolbar {
                         ToolbarItem(placement: .cancellationAction) {
                             Button("Dismiss") {
@@ -69,7 +70,7 @@ struct StopView: View {
 struct StopView_Previews: PreviewProvider {
     static var previews: some View {
         ScrollView {
-            RouteView(route: Route.sampleRoute)
+            RouteView(route: Route.sampleRoute, locationManager: LocationManager())
                 .padding()
         }
     }

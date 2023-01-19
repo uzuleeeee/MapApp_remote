@@ -6,10 +6,11 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct MainView: View {
-    @ObservedObject var routesManager = RoutesManager()
-    @ObservedObject var locationManager = LocationManager()
+    @ObservedObject var routesManager: RoutesManager
+    @ObservedObject var locationManager: LocationManager
     
     //@State private var isShowingNewRouteView = false
     //@State private var newRoute = Route.newRoute
@@ -17,13 +18,15 @@ struct MainView: View {
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
+                
+                
                 Text("Wake me up at...")
                     .font(.largeTitle)
                     .bold()
                 
                 ScrollView {
-                    RouteView(route: routesManager.currentRoute)
-                    AddStopView(index: routesManager.currentRoute.stops.count, routesManager: routesManager)
+                    RouteView(route: routesManager.currentRoute, locationManager: locationManager)
+                    AddStopView(index: routesManager.currentRoute.stops.count, locationManager: locationManager, routesManager: routesManager)
                     Spacer()
                 }
                 .scrollIndicators(.hidden)
@@ -141,13 +144,12 @@ struct MainView: View {
                 }
             }
              */
-            .environmentObject(routesManager)
         }
     }
 }
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        MainView(routesManager: RoutesManager(), locationManager: LocationManager())
     }
 }

@@ -21,7 +21,7 @@ struct RouteEditView: View {
                 Text("To: ")
                 TextField("Enter name of location", text: $route.to)
             }
-            RouteView(route: route)
+            //RouteView(route: route)
             Button("New Stop") {
                 isShowingNewStopView = true
             }

@@ -22,10 +22,10 @@ struct TripView: View {
             .padding(.bottom)
             
             if (routesManager.currentRoute.stops.count < 3) {
-                RouteView(route: routesManager.currentRoute, showMapButton: false)
+                RouteView(route: routesManager.currentRoute, locationManager: LocationManager(), showMapButton: false)
             } else {
                 ScrollView {
-                    RouteView(route: routesManager.currentRoute, showMapButton: false)
+                    RouteView(route: routesManager.currentRoute, locationManager: LocationManager(), showMapButton: false)
                 }
                 .scrollIndicators(.hidden)
             }

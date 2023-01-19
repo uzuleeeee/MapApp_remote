@@ -6,10 +6,22 @@
 //
 
 import Foundation
+import MapKit
 
-struct Location: Equatable {
+struct Location: Equatable, Identifiable {
+    let id: UUID
     var latitude: Double
     var longitude: Double
+    
+    var cllocation: CLLocation {
+        CLLocation(latitude: latitude, longitude: longitude)
+    }
+    
+    init(id: UUID = UUID(), latitude: Double, longitude: Double) {
+        self.id = id
+        self.latitude = latitude
+        self.longitude = longitude
+    }
 }
 
 extension Location {

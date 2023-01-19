@@ -10,11 +10,11 @@ import SwiftUI
 struct SearchView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
+    @ObservedObject var locationManager: LocationManager
     @ObservedObject var routesManager: RoutesManager
     
     @State private var searchEntry = ""
     @State private var searchLocationManager = SearchLocationManager()
-    @State private var locationManager = LocationManager()
     
     var body: some View {
         VStack {
@@ -30,7 +30,7 @@ struct SearchView: View {
                 if (!searchEntry.isEmpty && !searchLocationManager.searchedStops.isEmpty) {
                     ForEach(searchLocationManager.searchedStops) { stop in
                         HStack(spacing: 0) {
-                            StopView(stop: stop)
+                            StopView(stop: stop, distance: locationManager.distanceFrom(from: stop))
                             Button {
                                 routesManager.addStop(stop: stop)
                                 self.presentationMode.wrappedValue.dismiss()
@@ -48,6 +48,7 @@ struct SearchView: View {
                     }
                 }
             }
+            .scrollIndicators(.hidden)
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
@@ -63,10 +64,14 @@ struct SearchView: View {
             }
         }
         .onChange(of: searchEntry) { newSearchEntry in
-            if (!searchEntry.isEmpty) {
-                searchLocationManager.searchLocation(search: newSearchEntry, in: locationManager.region)
-            } else {
-                searchLocationManager.searchedStops = []
+            let delay = 0.3
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+                if (!searchEntry.isEmpty) {
+                    searchLocationManager.searchLocation(search: newSearchEntry, in: locationManager.region)
+                } else {
+                    searchLocationManager.searchedStops = []
+                }
             }
         }
     }
@@ -75,7 +80,7 @@ struct SearchView: View {
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            SearchView(routesManager: RoutesManager())
+            SearchView(locationManager: LocationManager(), routesManager: RoutesManager())
         }
     }
 }
