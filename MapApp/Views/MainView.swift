@@ -20,7 +20,7 @@ struct MainView: View {
                 
                 ScrollView {
                     RouteView(routesManager: routesManager)
-                    AddStopView(routesManager: routesManager, index: routesManager.currentRoute.stops.count)
+                    AddStopView(routesManager: routesManager)
                 }
                 .scrollIndicators(.hidden)
                 

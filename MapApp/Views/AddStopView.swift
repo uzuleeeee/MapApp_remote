@@ -10,9 +10,9 @@ import SwiftUI
 struct AddStopView: View {
     @ObservedObject var routesManager: RoutesManager
     
-    var index: Int
-    
     var body: some View {
+        let index = routesManager.currentRoute.stops.count
+        
         HStack {
             Image(systemName: "\(index+1).circle.fill")
                 .font(.largeTitle)
@@ -52,6 +52,6 @@ extension View {
 
 struct AddStopView_Previews: PreviewProvider {
     static var previews: some View {
-        AddStopView(routesManager: RoutesManager(), index: 1)
+        AddStopView(routesManager: RoutesManager())
     }
 }
