@@ -70,7 +70,7 @@ struct StopView: View {
 struct StopView_Previews: PreviewProvider {
     static var previews: some View {
         ScrollView {
-            RouteView(route: Route.sampleRoute, locationManager: LocationManager())
+            RouteView(routesManager: RoutesManager())
                 .padding()
         }
     }

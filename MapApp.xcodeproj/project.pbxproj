@@ -131,11 +131,11 @@
 		4A9B0C152960094C00257186 /* MapApp */ = {
 			isa = PBXGroup;
 			children = (
-				4A4AB02729738F670006A517 /* Info.plist */,
+				4A9B0C162960094C00257186 /* MapAppApp.swift */,
 				4A4AB02829739A070006A517 /* Views */,
 				4A98E51B296D078800D80F82 /* Models */,
-				4A9B0C162960094C00257186 /* MapAppApp.swift */,
 				4A9B0C1A2960094D00257186 /* Assets.xcassets */,
+				4A4AB02729738F670006A517 /* Info.plist */,
 				4A9B0C1C2960094D00257186 /* Preview Content */,
 			);
 			path = MapApp;

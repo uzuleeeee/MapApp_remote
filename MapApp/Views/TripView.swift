@@ -12,25 +12,24 @@ struct TripView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     @ObservedObject var routesManager: RoutesManager
-    @ObservedObject var locationManager: LocationManager
     
     var body: some View {
         VStack (spacing: 0) {
             SimpleRouteView(route: routesManager.currentRoute, zoom: { stop in
-                locationManager.region.center = CLLocationCoordinate2D(latitude: stop.location.latitude, longitude: stop.location.longitude)
+                routesManager.locationManager.region.center = CLLocationCoordinate2D(latitude: stop.location.latitude, longitude: stop.location.longitude)
             })
             .padding(.bottom)
             
             if (routesManager.currentRoute.stops.count < 3) {
-                RouteView(route: routesManager.currentRoute, locationManager: LocationManager(), showMapButton: false)
+                RouteView(routesManager: routesManager, showMapButton: false)
             } else {
                 ScrollView {
-                    RouteView(route: routesManager.currentRoute, locationManager: LocationManager(), showMapButton: false)
+                    RouteView(routesManager: routesManager, showMapButton: false)
                 }
                 .scrollIndicators(.hidden)
             }
             
-            Map(coordinateRegion: $locationManager.region, showsUserLocation: true, annotationItems: routesManager.currentRoute.stops) { stop in
+            Map(coordinateRegion: $routesManager.locationManager.region, showsUserLocation: true, annotationItems: routesManager.currentRoute.stops) { stop in
                 MapMarker(coordinate: CLLocationCoordinate2D(latitude: stop.location.latitude, longitude: stop.location.longitude))
             }
             .cornerRadius(25)
@@ -56,6 +55,6 @@ struct TripView: View {
 
 struct TripView_Previews: PreviewProvider {
     static var previews: some View {
-        TripView(routesManager: RoutesManager(), locationManager: LocationManager())
+        TripView(routesManager: RoutesManager())
     }
 }

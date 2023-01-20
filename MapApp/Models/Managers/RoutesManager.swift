@@ -11,13 +11,8 @@ class RoutesManager: ObservableObject {
     @Published var onRoute: Bool = false
     
     @Published var currentRoute: Route = Route.newRoute
-    @Published var tempRoute: Route = Route.newRoute
-    @Published var savedRoutes: [Route] = []
-    
-    init () {
-        tempRoute = Route.sampleRoute
-        savedRoutes = Route.sampleRoutes
-    }
+
+    var locationManager = LocationManager()
     
     func start () {
         onRoute = true
@@ -25,10 +20,6 @@ class RoutesManager: ObservableObject {
     
     func stop () {
         onRoute = false
-    }
-    
-    func saveRoute (route: Route) {
-        savedRoutes.append(route)
     }
     
     func addStop (stop: Stop) {

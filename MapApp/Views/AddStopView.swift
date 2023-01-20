@@ -8,17 +8,16 @@
 import SwiftUI
 
 struct AddStopView: View {
-    var index: Int
-    
-    @ObservedObject var locationManager: LocationManager
     @ObservedObject var routesManager: RoutesManager
+    
+    var index: Int
     
     var body: some View {
         HStack {
             Image(systemName: "\(index+1).circle.fill")
                 .font(.largeTitle)
             NavigationLink {
-                SearchView(locationManager: locationManager, routesManager: routesManager)
+                SearchView(routesManager: routesManager)
                     .padding()
             } label: {
                 Image(systemName: "plus")
@@ -52,6 +51,6 @@ extension View {
 
 struct AddStopView_Previews: PreviewProvider {
     static var previews: some View {
-        AddStopView(index: 1, locationManager: LocationManager(), routesManager: RoutesManager())
+        AddStopView(routesManager: RoutesManager(), index: 1)
     }
 }

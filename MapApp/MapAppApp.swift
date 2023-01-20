@@ -10,13 +10,12 @@ import SwiftUI
 @main
 struct MapAppApp: App {
     @StateObject private var routesManager = RoutesManager()
-    @StateObject private var locationManager = LocationManager()
     
     var body: some Scene {
         WindowGroup {
-            MainView(routesManager: routesManager, locationManager: locationManager)
+            MainView(routesManager: routesManager)
                 .onAppear {
-                    locationManager.checkIfLocationServicesIsEnabled()
+                    routesManager.locationManager.checkIfLocationServicesIsEnabled()
                 }
         }
     }

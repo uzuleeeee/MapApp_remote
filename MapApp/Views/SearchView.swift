@@ -10,7 +10,6 @@ import SwiftUI
 struct SearchView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @ObservedObject var locationManager: LocationManager
     @ObservedObject var routesManager: RoutesManager
     
     @State private var searchEntry = ""
@@ -30,7 +29,7 @@ struct SearchView: View {
                 if (!searchEntry.isEmpty && !searchLocationManager.searchedStops.isEmpty) {
                     ForEach(searchLocationManager.searchedStops) { stop in
                         HStack(spacing: 0) {
-                            StopView(stop: stop, distance: locationManager.distanceFrom(from: stop))
+                            StopView(stop: stop, distance: routesManager.locationManager.distanceFrom(from: stop))
                             Button {
                                 routesManager.addStop(stop: stop)
                                 self.presentationMode.wrappedValue.dismiss()
@@ -68,7 +67,7 @@ struct SearchView: View {
             
             DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
                 if (!searchEntry.isEmpty) {
-                    searchLocationManager.searchLocation(search: newSearchEntry, in: locationManager.region)
+                    searchLocationManager.searchLocation(search: newSearchEntry, in: routesManager.locationManager.region)
                 } else {
                     searchLocationManager.searchedStops = []
                 }
@@ -80,7 +79,7 @@ struct SearchView: View {
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            SearchView(locationManager: LocationManager(), routesManager: RoutesManager())
+            SearchView(routesManager: RoutesManager())
         }
     }
 }
