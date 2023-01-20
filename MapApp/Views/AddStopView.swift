@@ -40,9 +40,10 @@ struct AddStopView: View {
 }
 
 extension View {
-    @ViewBuilder func `if`<Content: View>(_ condition: Bool, transform: (Self) -> Content) -> some View {
-        if condition {
-            transform(self)
+    @ViewBuilder
+    func `if`<Content: View>(_ conditional: Bool, content: (Self) -> Content) -> some View {
+        if conditional {
+            content(self)
         } else {
             self
         }

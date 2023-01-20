@@ -24,6 +24,12 @@ struct RouteView: View {
                 }
             }
         }
+        .if(routesManager.currentRoute.stops.count > 2) { view in
+            ScrollView {
+                view
+            }
+            .scrollIndicators(.hidden)
+        }
     }
 }
 

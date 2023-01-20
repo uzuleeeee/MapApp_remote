@@ -20,14 +20,7 @@ struct TripView: View {
             })
             .padding(.bottom)
             
-            if (routesManager.currentRoute.stops.count < 3) {
-                RouteView(routesManager: routesManager, showMapButton: false)
-            } else {
-                ScrollView {
-                    RouteView(routesManager: routesManager, showMapButton: false)
-                }
-                .scrollIndicators(.hidden)
-            }
+            RouteView(routesManager: routesManager, showMapButton: false)
             
             Map(coordinateRegion: $routesManager.locationManager.region, showsUserLocation: true, annotationItems: routesManager.currentRoute.stops) { stop in
                 MapMarker(coordinate: CLLocationCoordinate2D(latitude: stop.location.latitude, longitude: stop.location.longitude))
