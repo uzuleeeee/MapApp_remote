@@ -10,7 +10,7 @@ import SwiftUI
 struct SearchView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @ObservedObject var routesManager: RoutesManager
+    @EnvironmentObject var routesManager: RoutesManager
     
     @State private var searchEntry = ""
     @State private var searchLocationManager = SearchLocationManager()
@@ -75,7 +75,8 @@ struct SearchView: View {
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            SearchView(routesManager: RoutesManager())
+            SearchView()
+                .environmentObject(RoutesManager())
         }
     }
 }

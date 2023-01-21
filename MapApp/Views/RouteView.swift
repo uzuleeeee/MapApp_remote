@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RouteView: View {
-    @ObservedObject var routesManager: RoutesManager
+    @EnvironmentObject var routesManager: RoutesManager
     
     @State var showMapButton: Bool = true
     
@@ -35,6 +35,7 @@ struct RouteView: View {
 
 struct RouteView_Previews: PreviewProvider {
     static var previews: some View {
-        RouteView(routesManager: RoutesManager())
+        RouteView()
+            .environmentObject(RoutesManager())
     }
 }

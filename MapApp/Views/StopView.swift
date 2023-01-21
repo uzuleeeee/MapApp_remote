@@ -10,9 +10,9 @@ import SwiftUI
 struct StopView: View {
     let stop: Stop
     @State var distance: Double
+    @State var showMapButton: Bool = true
 
     @State private var isShowingMapView = false
-    @State var showMapButton: Bool = true
     
     var body: some View {
         HStack {
@@ -59,7 +59,8 @@ struct StopView: View {
 struct StopView_Previews: PreviewProvider {
     static var previews: some View {
         ScrollView {
-            RouteView(routesManager: RoutesManager())
+            RouteView()
+                .environmentObject(RoutesManager())
                 .padding()
         }
     }

@@ -9,7 +9,7 @@ import SwiftUI
 import MapKit
 
 struct MainView: View {
-    @ObservedObject var routesManager: RoutesManager
+    @EnvironmentObject var routesManager: RoutesManager
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -20,14 +20,14 @@ struct MainView: View {
             
             // Stops list with conditional add stop view
             ScrollView {
-                RouteView(routesManager: routesManager)
-                AddStopView(routesManager: routesManager)
+                RouteView()
+                AddStopView()
             }
             .scrollIndicators(.hidden)
             
             // Start button
             NavigationLink {
-                TripView(routesManager: routesManager)
+                TripView()
                     .navigationBarBackButtonHidden()
                     .padding(.horizontal)
             } label: {
@@ -39,14 +39,15 @@ struct MainView: View {
             })
             .padding(.top)
             .disabled(routesManager.currentRoute.stops.isEmpty)
-        }
+        }.environmentObject(routesManager)
     }
 }
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            MainView(routesManager: RoutesManager())
+            MainView()
+                .environmentObject(RoutesManager())
                 .padding()
         }
     }

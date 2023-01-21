@@ -14,7 +14,8 @@ struct MapAppApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                MainView(routesManager: routesManager)
+                MainView()
+                    .environmentObject(routesManager)
                     .padding()
                     .onAppear {
                         routesManager.locationManager.checkIfLocationServicesIsEnabled()

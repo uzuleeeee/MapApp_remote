@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AddStopView: View {
-    @ObservedObject var routesManager: RoutesManager
+    @EnvironmentObject var routesManager: RoutesManager
     
     var body: some View {
         let index = routesManager.currentRoute.stops.count
@@ -17,13 +17,14 @@ struct AddStopView: View {
             Image(systemName: "\(index+1).circle.fill")
                 .font(.largeTitle)
             NavigationLink {
-                SearchView(routesManager: routesManager)
+                SearchView()
                     .padding()
             } label: {
                 Image(systemName: "plus")
                     .bigButtonStyle(foregroundColor: .black, backgroundColor: .gray.opacity(0.15))
             }
         }
+        .environmentObject(RoutesManager())
         .if(index != 0) { view in
             view.padding(.top)
         }
@@ -35,6 +36,7 @@ struct AddStopView: View {
 
 struct AddStopView_Previews: PreviewProvider {
     static var previews: some View {
-        AddStopView(routesManager: RoutesManager())
+        AddStopView()
+            .environmentObject(RoutesManager())
     }
 }

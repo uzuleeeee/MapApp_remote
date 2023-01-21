@@ -11,7 +11,7 @@ import MapKit
 struct TripView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @ObservedObject var routesManager: RoutesManager
+    @EnvironmentObject var routesManager: RoutesManager
     
     var body: some View {
         VStack (spacing: 0) {
@@ -22,7 +22,7 @@ struct TripView: View {
             .padding(.bottom)
             
             // List of stops
-            RouteView(routesManager: routesManager, showMapButton: false)
+            RouteView(showMapButton: false)
             
             // Map
             Map(coordinateRegion: $routesManager.locationManager.region, showsUserLocation: true, annotationItems: routesManager.currentRoute.stops) { stop in
@@ -40,14 +40,14 @@ struct TripView: View {
                     .bigButtonStyle(foregroundColor: .white, backgroundColor: .red)
             }
             .padding(.top)
-        }
+        }.environmentObject(routesManager)
     }
 }
 
 struct TripView_Previews: PreviewProvider {
     static var previews: some View {
-        TripView(routesManager: RoutesManager())
-        
-        .padding(.horizontal)
+        TripView()
+            .environmentObject(RoutesManager())
+            .padding(.horizontal)
     }
 }
