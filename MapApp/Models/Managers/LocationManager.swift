@@ -5,7 +5,7 @@
 //  Created by Mac-aroni on 1/9/23.
 //
 
-import Foundation
+import SwiftUI
 import MapKit
 
 class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
@@ -23,6 +23,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         print("STAGE 1")
         if CLLocationManager.locationServicesEnabled() {
             print("STAGE 2")
+            checkLocationAuthorization()
             locationManager.delegate = self
             locationManager.allowsBackgroundLocationUpdates = true
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
@@ -32,14 +33,17 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         }
     }
     
-    private func checkLocationAuthorization() {switch locationManager.authorizationStatus {
+    private func checkLocationAuthorization() {
+        switch locationManager.authorizationStatus {
             case .notDetermined:
+                print("not determined")
                 locationManager.requestWhenInUseAuthorization()
             case .restricted:
                 print("Your location is restricted due to parental controls.")
             case .denied:
                 print("You have denied this app location permission.")
             case .authorizedAlways, .authorizedWhenInUse:
+                print("authorized")
                 region.center = locationManager.location?.coordinate ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)
                 print("---------------------" ,locationManager.location?.coordinate.latitude, locationManager.location?.coordinate.longitude)
             @unknown default:
@@ -48,7 +52,9 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     func center (to stop: Stop) {
-        region.center = CLLocationCoordinate2D(latitude: stop.location.coordinate.latitude, longitude: stop.location.coordinate.longitude)
+        withAnimation {
+            region.center = CLLocationCoordinate2D(latitude: stop.location.coordinate.latitude, longitude: stop.location.coordinate.longitude)
+        }
     }
     
     func distanceFrom(from stop: Stop) -> Double {

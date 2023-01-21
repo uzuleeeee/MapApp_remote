@@ -19,7 +19,6 @@ struct AddStopView: View {
             NavigationLink {
                 SearchView()
                     .environmentObject(routesManager)
-                    .padding()
             } label: {
                 Image(systemName: "plus")
                     .bigButtonStyle(foregroundColor: .black, backgroundColor: .gray.opacity(0.15))

@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct SearchView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @FocusState private var searchIsFocused: Bool
     
     @EnvironmentObject var routesManager: RoutesManager
     
@@ -18,15 +20,22 @@ struct SearchView: View {
     var body: some View {
         VStack {
             TextField("Search for new stop", text: $searchEntry)
+                .focused($searchIsFocused)
                 .bold()
-                .frame(maxWidth: .infinity)
-                .roundedBackground(color: .gray.opacity(0.15))
-                
+                .roundedBackground(color: .gray.opacity(0.1))
+            
             ScrollView {
                 if (!searchEntry.isEmpty && !searchLocationManager.searchedStops.isEmpty) {
                     ForEach(searchLocationManager.searchedStops) { stop in
                         HStack(spacing: 0) {
-                            StopView(stop: stop, distance: routesManager.locationManager.distanceFrom(from: stop))
+                            Button {
+                                routesManager.locationManager.center(to: stop)
+                                searchIsFocused = false
+                            } label: {
+                                StopView(stop: stop, distance: routesManager.locationManager.distanceFrom(from: stop), showMapButton: false)
+                                    .foregroundColor(.black)
+                            }
+                            
                             Button {
                                 routesManager.addStop(stop: stop)
                                 self.presentationMode.wrappedValue.dismiss()
@@ -45,7 +54,14 @@ struct SearchView: View {
                 }
             }
             .scrollIndicators(.hidden)
+            
+            // Map
+            Map(coordinateRegion: $routesManager.locationManager.region, showsUserLocation: true, annotationItems: routesManager.currentRoute.stops) { stop in
+                MapMarker(coordinate: CLLocationCoordinate2D(latitude: stop.location.coordinate.latitude, longitude: stop.location.coordinate.longitude))
+            }
+            .cornerRadius(25)
         }
+        .padding()
         .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {

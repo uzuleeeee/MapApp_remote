@@ -42,7 +42,7 @@ struct StopView: View {
         .roundedBackground(color: .gray.opacity(0.1))
         .sheet(isPresented: $isShowingMapView) {
             NavigationView {
-                MapView(stop: stop)
+                MapView()
                     .toolbar {
                         ToolbarItem(placement: .cancellationAction) {
                             Button("Dismiss") {
