@@ -18,6 +18,7 @@ struct AddStopView: View {
                 .font(.largeTitle)
             NavigationLink {
                 SearchView()
+                    .environmentObject(routesManager)
                     .padding()
             } label: {
                 Image(systemName: "plus")
