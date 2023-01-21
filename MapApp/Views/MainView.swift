@@ -25,20 +25,13 @@ struct MainView: View {
                 .scrollIndicators(.hidden)
                 
                 NavigationLink {
-                    VStack {
-                        TripView(routesManager: routesManager)
-                            .navigationBarBackButtonHidden()
-                            .navigationTitle("")
-                            .navigationBarTitleDisplayMode(.inline)
-                            .padding()
-                    }
+                    TripView(routesManager: routesManager)
+                        .navigationBarBackButtonHidden()
                 } label: {
                     Text("Start")
-                        .font(.system(size: 30, weight: .semibold))
+                        .font(.title)
                         .frame(maxWidth: .infinity)
-                        .padding(.vertical, 10)
-                        .background(routesManager.currentRoute.stops.isEmpty ? .gray.opacity(0.5) : .blue)
-                        .cornerRadius(25)
+                        .roundedBackground(color: routesManager.currentRoute.stops.isEmpty ? .gray.opacity(0.5) : .blue)
                         .foregroundColor(.white)
                         .padding(.top)
                 }

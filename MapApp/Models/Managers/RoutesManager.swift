@@ -10,7 +10,7 @@ import Foundation
 class RoutesManager: ObservableObject {
     @Published var onRoute: Bool = false
     
-    @Published var currentRoute: Route = Route.newRoute
+    @Published var currentRoute: Route = Route.sampleRoute
 
     var locationManager = LocationManager()
     

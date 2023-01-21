@@ -19,11 +19,8 @@ struct SearchView: View {
         VStack {
             TextField("Search for new stop", text: $searchEntry)
                 .bold()
-                .padding()
                 .frame(maxWidth: .infinity)
-                .background(.ultraThickMaterial)
-                .foregroundColor(.black)
-                .cornerRadius(25)
+                .roundedBackground(color: .gray.opacity(0.15))
                 
             ScrollView {
                 if (!searchEntry.isEmpty && !searchLocationManager.searchedStops.isEmpty) {
@@ -49,7 +46,6 @@ struct SearchView: View {
             }
             .scrollIndicators(.hidden)
         }
-        .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {

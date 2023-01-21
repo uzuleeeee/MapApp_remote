@@ -31,21 +31,17 @@ struct StopView: View {
                         isShowingMapView = true
                     } label: {
                         Image(systemName: "map")
+                            .roundedBackground(color: .white)
                             .font(.title)
                             .bold()
-                            .padding()
                             .foregroundColor(.black)
-                            .background(.white.opacity(0.75))
-                            .cornerRadius(25)
                     }
                 }
             }
             
             Spacer()
         }
-        .padding()
-        .background(.ultraThickMaterial)
-        .cornerRadius(25)
+        .roundedBackground(color: .gray.opacity(0.1))
         .sheet(isPresented: $isShowingMapView) {
             NavigationView {
                 MapView(region: stop.region, route: [stop])
