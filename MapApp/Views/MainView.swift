@@ -29,15 +29,12 @@ struct MainView: View {
                         .navigationBarBackButtonHidden()
                 } label: {
                     Text("Start")
-                        .font(.title)
-                        .frame(maxWidth: .infinity)
-                        .roundedBackground(color: routesManager.currentRoute.stops.isEmpty ? .gray.opacity(0.5) : .blue)
-                        .foregroundColor(.white)
-                        .padding(.top)
+                        .bigButtonStyle(color: routesManager.currentRoute.stops.isEmpty ? .gray.opacity(0.5) : .blue)
                 }
                 .simultaneousGesture(TapGesture().onEnded{
                     routesManager.start()
                 })
+                .padding(.top)
                 .disabled(routesManager.currentRoute.stops.isEmpty)
             }
             .padding()

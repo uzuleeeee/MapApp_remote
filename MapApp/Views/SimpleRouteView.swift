@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SimpleRouteView: View {
     let route: Route
-    let zoom: (_ stop: Stop) -> Void
+    let centerToAction: (_ stop: Stop) -> Void
     
     var body: some View {
         VStack (spacing: 0) {
@@ -34,7 +34,7 @@ struct SimpleRouteView: View {
                         let index = route.stops.firstIndex(of: stop)
                         
                         Button {
-                            zoom(stop)
+                            centerToAction(stop)
                         } label: {
                             ZStack {
                                 Image(systemName: "\((index ?? -1)+1).circle")
@@ -63,6 +63,6 @@ struct SimpleRouteView: View {
 
 struct SimpleRouteView_Previews: PreviewProvider {
     static var previews: some View {
-        SimpleRouteView(route: Route.sampleRoute, zoom: {stop in })
+        SimpleRouteView(route: Route.sampleRoute, centerToAction: {stop in })
     }
 }

@@ -11,7 +11,6 @@
 		4A94AB7729746A74008BE786 /* SearchLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A94AB7629746A74008BE786 /* SearchLocationManager.swift */; };
 		4A94AB792974A3A5008BE786 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A94AB782974A3A5008BE786 /* SearchView.swift */; };
 		4A94AB7B29751B39008BE786 /* AddStopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A94AB7A29751B39008BE786 /* AddStopView.swift */; };
-		4A98E51D296D079D00D80F82 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A98E51C296D079D00D80F82 /* Location.swift */; };
 		4A98E51F296D07A300D80F82 /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A98E51E296D07A300D80F82 /* Stop.swift */; };
 		4A98E521296D07A900D80F82 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A98E520296D07A900D80F82 /* Route.swift */; };
 		4A98E525296D094600D80F82 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A98E524296D094600D80F82 /* LocationManager.swift */; };
@@ -34,7 +33,6 @@
 		4A94AB7629746A74008BE786 /* SearchLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationManager.swift; sourceTree = "<group>"; };
 		4A94AB782974A3A5008BE786 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		4A94AB7A29751B39008BE786 /* AddStopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStopView.swift; sourceTree = "<group>"; };
-		4A98E51C296D079D00D80F82 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		4A98E51E296D07A300D80F82 /* Stop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stop.swift; sourceTree = "<group>"; };
 		4A98E520296D07A900D80F82 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		4A98E524296D094600D80F82 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -91,7 +89,6 @@
 		4A98E522296D083400D80F82 /* Data types */ = {
 			isa = PBXGroup;
 			children = (
-				4A98E51C296D079D00D80F82 /* Location.swift */,
 				4A98E51E296D07A300D80F82 /* Stop.swift */,
 				4A98E520296D07A900D80F82 /* Route.swift */,
 			);
@@ -228,7 +225,6 @@
 				4A98E521296D07A900D80F82 /* Route.swift in Sources */,
 				4A94AB7729746A74008BE786 /* SearchLocationManager.swift in Sources */,
 				4ADE9B212978897B0024FF27 /* TripView.swift in Sources */,
-				4A98E51D296D079D00D80F82 /* Location.swift in Sources */,
 				4A94AB792974A3A5008BE786 /* SearchView.swift in Sources */,
 				4A98E52B296D0AB200D80F82 /* RouteView.swift in Sources */,
 				4A98E52D296D0D0900D80F82 /* StopView.swift in Sources */,

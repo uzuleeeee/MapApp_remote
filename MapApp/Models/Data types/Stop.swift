@@ -10,28 +10,24 @@ import MapKit
 
 struct Stop: Identifiable, Equatable {
     let id: UUID
-    var location: Location
+    var location: CLLocation
     var name: String
     
-    init(id: UUID = UUID(), location: Location, name: String) {
+    init(id: UUID = UUID(), latitude: Double, longitude: Double, name: String) {
         self.id = id
-        self.location = location
+        self.location = CLLocation(latitude: latitude, longitude: longitude)
         self.name = name
     }
 }
 
 extension Stop {
-    var region: MKCoordinateRegion {
-        MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-    }
-    
     static func ==(lhs: Stop, rhs: Stop) -> Bool {
         lhs.location == rhs.location && lhs.name == rhs.name
     }
 }
 
 extension Stop {
-    static let newStop = Stop(location: Location(latitude: 0, longitude: 0), name: "New stop")
+    static let newStop = Stop(latitude: 0, longitude: 0, name: "New stop")
     
-    static let sampleStop = Stop(location: Location(latitude: 33.781500, longitude: -84.396040), name: "10th St & Holly St")
+    static let sampleStop = Stop(latitude: 33.781500, longitude: -84.396040, name: "10th St & Holly St")
 }

@@ -20,40 +20,33 @@ struct Route: Identifiable {
         self.to = to
     }
 }
-
-extension Route {
-    mutating func addStop (stop: Stop) {
-        stops.append(stop)
-    }
-}
-
 extension Route {
     static let newRoute = Route(stops: [], from: "", to: "")
     
     static let sampleRoute = Route(stops: [
-        Stop(location: Location(latitude: 33.781720, longitude: -84.396410), name: "Graduate Living Center"),
-        Stop(location: Location(latitude: 33.777039, longitude: -84.395378), name: "Klaus Advanced Computing Building"),
-        Stop(location: Location(latitude: 33.775700, longitude: -84.404243), name: "Georgia Tech Campus Recreation Center"),
-        Stop(location: Location(latitude: 33.781500, longitude: -84.396040), name: "10th St & Holly St"),
+        Stop(latitude: 33.781720, longitude: -84.396410, name: "Graduate Living Center"),
+        Stop(latitude: 33.777039, longitude: -84.395378, name: "Klaus Advanced Computing Building"),
+        Stop(latitude: 33.775700, longitude: -84.404243, name: "Georgia Tech Campus Recreation Center"),
+        Stop(latitude: 33.781500, longitude: -84.396040, name: "10th St & Holly St"),
         Stop.newStop],
                                   from: "Apple", to: "Banana")
     
     static let sampleRoutes = [Route(stops: [
-                                    Stop(location: Location(latitude: 33.781720, longitude: -84.396410), name: "Graduate Living Center"),
-                                    Stop(location: Location(latitude: 33.777039, longitude: -84.395378), name: "Klaus Advanced Computing Building")], from: "Apple", to: "Banana"),
+                                    Stop(latitude: 33.781720, longitude: -84.396410, name: "Graduate Living Center"),
+                                    Stop(latitude: 33.777039, longitude: -84.395378, name: "Klaus Advanced Computing Building")], from: "Apple", to: "Banana"),
                                Route(stops: [
-                                   Stop(location: Location(latitude: -23, longitude: 24), name: "Card Ave"),
-                                   Stop(location: Location(latitude: 0, longitude: 5), name: "Donald Dr")], from: "Card", to: "Donald"),
+                                   Stop(latitude: -23, longitude: 24, name: "Card Ave"),
+                                   Stop(latitude: 0, longitude: 5, name: "Donald Dr")], from: "Card", to: "Donald"),
                                Route(stops: [
-                                   Stop(location: Location(latitude: 30, longitude: -4), name: "Gorilla St"),
-                                   Stop(location: Location(latitude: 17, longitude: 40), name: "James St")], from: "Gorilla", to: "James"),
+                                   Stop(latitude: 30, longitude: -4, name: "Gorilla St"),
+                                   Stop(latitude: 17, longitude: 40, name: "James St")], from: "Gorilla", to: "James"),
                                Route(stops: [
-                                   Stop(location: Location(latitude: 50, longitude: 50), name: "Apple St"),
-                                   Stop(location: Location(latitude: 45, longitude: 45), name: "Banana St")], from: "Apple", to: "Banana"),
+                                   Stop(latitude: 50, longitude: 50, name: "Apple St"),
+                                   Stop(latitude: 45, longitude: 45, name: "Banana St")], from: "Apple", to: "Banana"),
                                Route(stops: [
-                                   Stop(location: Location(latitude: -23, longitude: 24), name: "Card Ave"),
-                                   Stop(location: Location(latitude: 0, longitude: 5), name: "Donald Dr")], from: "Card", to: "Donald"),
+                                   Stop(latitude: -23, longitude: 24, name: "Card Ave"),
+                                   Stop(latitude: 0, longitude: 5, name: "Donald Dr")], from: "Card", to: "Donald"),
                                Route(stops: [
-                                   Stop(location: Location(latitude: 30, longitude: -4), name: "Gorilla St"),
-                                   Stop(location: Location(latitude: 17, longitude: 40), name: "James St")], from: "Gorilla", to: "James")]
+                                   Stop(latitude: 30, longitude: -4, name: "Gorilla St"),
+                                   Stop(latitude: 17, longitude: 40, name: "James St")], from: "Gorilla", to: "James")]
                             }

@@ -25,8 +25,8 @@ class SearchLocationManager: ObservableObject {
             }
             
             self.searchedStops = response.mapItems.compactMap({ item in
-                return Stop(location: Location(latitude: item.placemark.coordinate.latitude,
-                                               longitude: item.placemark.coordinate.longitude),
+                return Stop(latitude: item.placemark.coordinate.latitude,
+                                               longitude: item.placemark.coordinate.longitude,
                                                 name: item.placemark.name ?? "No name found")
             })
         }

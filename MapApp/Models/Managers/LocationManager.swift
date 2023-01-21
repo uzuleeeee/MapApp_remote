@@ -47,9 +47,13 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         }
     }
     
+    func center (to stop: Stop) {
+        region.center = CLLocationCoordinate2D(latitude: stop.location.coordinate.latitude, longitude: stop.location.coordinate.longitude)
+    }
+    
     func distanceFrom(from stop: Stop) -> Double {
-        let distance = (locationManager.location?.distance(from: (stop.location.cllocation)) ?? -1.0)
-        print(distance, locationManager.location?.coordinate, stop.location.cllocation.coordinate)
+        let distance = (locationManager.location?.distance(from: (stop.location)) ?? -1.0)
+        print(distance, locationManager.location?.coordinate, stop.location.coordinate)
         return distance / 1000.0
     }
     

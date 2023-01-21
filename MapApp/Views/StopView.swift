@@ -44,18 +44,13 @@ struct StopView: View {
         .roundedBackground(color: .gray.opacity(0.1))
         .sheet(isPresented: $isShowingMapView) {
             NavigationView {
-                MapView(region: stop.region, route: [stop])
+                MapView(stop: stop)
                     .toolbar {
                         ToolbarItem(placement: .cancellationAction) {
                             Button("Dismiss") {
                                 isShowingMapView = false
                             }
-                            .bold()
-                            .padding(2)
-                            .padding(.leading,7)
-                            .background(.blue)
-                            .foregroundColor(.white)
-                            .cornerRadius(25)
+                            .smallButtonStyle()
                         }
                     }
             }

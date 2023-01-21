@@ -15,15 +15,15 @@ struct TripView: View {
     
     var body: some View {
         VStack (spacing: 0) {
-            SimpleRouteView(route: routesManager.currentRoute, zoom: { stop in
-                routesManager.locationManager.region.center = CLLocationCoordinate2D(latitude: stop.location.latitude, longitude: stop.location.longitude)
+            SimpleRouteView(route: routesManager.currentRoute, centerToAction: { stop in
+                routesManager.locationManager.center(to: stop)
             })
             .padding(.bottom)
             
             RouteView(routesManager: routesManager, showMapButton: false)
             
             Map(coordinateRegion: $routesManager.locationManager.region, showsUserLocation: true, annotationItems: routesManager.currentRoute.stops) { stop in
-                MapMarker(coordinate: CLLocationCoordinate2D(latitude: stop.location.latitude, longitude: stop.location.longitude))
+                MapMarker(coordinate: CLLocationCoordinate2D(latitude: stop.location.coordinate.latitude, longitude: stop.location.coordinate.longitude))
             }
             .cornerRadius(25)
             .padding(.vertical)
@@ -33,12 +33,7 @@ struct TripView: View {
                 self.presentationMode.wrappedValue.dismiss()
             } label: {
                 Text("End")
-                    .font(.system(size: 30, weight: .semibold))
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 10)
-                    .background(.red)
-                    .cornerRadius(25)
-                    .foregroundColor(.white)
+                    .bigButtonStyle(color: .red)
             }
             .padding(.top)
         }

@@ -9,19 +9,23 @@ import SwiftUI
 import MapKit
 
 struct MapView: View {
-    @State var region: MKCoordinateRegion
-    let route: [Stop]
+    var stop: Stop
+    
+    @State private var region = MKCoordinateRegion()
     
     var body: some View {
-        Map(coordinateRegion: $region, showsUserLocation: true, annotationItems: route) { stop in
-            MapMarker(coordinate: CLLocationCoordinate2D(latitude: stop.location.latitude, longitude: stop.location.longitude))
+        Map(coordinateRegion: $region, showsUserLocation: true, annotationItems: [stop]) { stop in
+            MapMarker(coordinate: CLLocationCoordinate2D(latitude: stop.location.coordinate.latitude, longitude: stop.location.coordinate.longitude))
         }
         .ignoresSafeArea()
+        .onAppear {
+            region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: stop.location.coordinate.latitude, longitude: stop.location.coordinate.latitude), span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
+        }
     }
 }
 
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
-        MapView(region: Stop.sampleStop.region, route: Route.sampleRoute.stops)
+        MapView(stop: Stop.sampleStop)
     }
 }
