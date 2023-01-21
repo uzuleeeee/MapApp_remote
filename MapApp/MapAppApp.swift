@@ -13,10 +13,13 @@ struct MapAppApp: App {
     
     var body: some Scene {
         WindowGroup {
-            MainView(routesManager: routesManager)
-                .onAppear {
-                    routesManager.locationManager.checkIfLocationServicesIsEnabled()
-                }
+            NavigationView {
+                MainView(routesManager: routesManager)
+                    .padding()
+                    .onAppear {
+                        routesManager.locationManager.checkIfLocationServicesIsEnabled()
+                    }
+            }
         }
     }
 }

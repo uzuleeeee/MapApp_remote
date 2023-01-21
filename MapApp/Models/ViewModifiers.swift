@@ -19,13 +19,14 @@ struct RoundedBackground: ViewModifier {
 }
 
 struct BigButton: ViewModifier {
-    let color: Color
+    let backgroundColor: Color
+    let foregroundColor: Color
     
     func body(content: Content) -> some View {
         content
             .frame(maxWidth: .infinity)
-            .roundedBackground(color: color)
-            .foregroundColor(.white)
+            .roundedBackground(color: backgroundColor)
+            .foregroundColor(foregroundColor)
             .fontWeight(.semibold)
             .font(.title)
     }
@@ -57,8 +58,8 @@ extension View {
         modifier(RoundedBackground(color: color))
     }
     
-    func bigButtonStyle(color: Color) -> some View {
-        modifier(BigButton(color: color))
+    func bigButtonStyle(foregroundColor: Color, backgroundColor: Color) -> some View {
+        modifier(BigButton(backgroundColor: backgroundColor, foregroundColor: foregroundColor))
     }
     
     func smallButtonStyle() -> some View {

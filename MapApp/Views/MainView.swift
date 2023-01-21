@@ -12,38 +12,42 @@ struct MainView: View {
     @ObservedObject var routesManager: RoutesManager
     
     var body: some View {
-        NavigationView {
-            VStack(alignment: .leading) {
-                Text("Wake me up at...")
-                    .font(.largeTitle)
-                    .bold()
-                
-                ScrollView {
-                    RouteView(routesManager: routesManager)
-                    AddStopView(routesManager: routesManager)
-                }
-                .scrollIndicators(.hidden)
-                
-                NavigationLink {
-                    TripView(routesManager: routesManager)
-                        .navigationBarBackButtonHidden()
-                } label: {
-                    Text("Start")
-                        .bigButtonStyle(color: routesManager.currentRoute.stops.isEmpty ? .gray.opacity(0.5) : .blue)
-                }
-                .simultaneousGesture(TapGesture().onEnded{
-                    routesManager.start()
-                })
-                .padding(.top)
-                .disabled(routesManager.currentRoute.stops.isEmpty)
+        VStack(alignment: .leading) {
+            // Title
+            Text("Wake me up at...")
+                .font(.largeTitle)
+                .bold()
+            
+            // Stops list with conditional add stop view
+            ScrollView {
+                RouteView(routesManager: routesManager)
+                AddStopView(routesManager: routesManager)
             }
-            .padding()
+            .scrollIndicators(.hidden)
+            
+            // Start button
+            NavigationLink {
+                TripView(routesManager: routesManager)
+                    .navigationBarBackButtonHidden()
+                    .padding(.horizontal)
+            } label: {
+                Text("Start")
+                    .bigButtonStyle(foregroundColor: .white, backgroundColor: routesManager.currentRoute.stops.isEmpty ? .gray.opacity(0.5) : .blue)
+            }
+            .simultaneousGesture(TapGesture().onEnded{
+                routesManager.start()
+            })
+            .padding(.top)
+            .disabled(routesManager.currentRoute.stops.isEmpty)
         }
     }
 }
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView(routesManager: RoutesManager())
+        NavigationView {
+            MainView(routesManager: RoutesManager())
+                .padding()
+        }
     }
 }

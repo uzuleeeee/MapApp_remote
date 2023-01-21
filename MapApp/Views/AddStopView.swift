@@ -21,11 +21,7 @@ struct AddStopView: View {
                     .padding()
             } label: {
                 Image(systemName: "plus")
-                    .frame(maxWidth: .infinity)
-                    .roundedBackground(color: .gray.opacity(0.15))
-                    .font(.title)
-                    .bold()
-                    .foregroundColor(.black)
+                    .bigButtonStyle(foregroundColor: .black, backgroundColor: .gray.opacity(0.15))
             }
         }
         .if(index != 0) { view in

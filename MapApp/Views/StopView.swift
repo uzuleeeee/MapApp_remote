@@ -16,30 +16,28 @@ struct StopView: View {
     
     var body: some View {
         HStack {
-            HStack {
-                VStack(alignment: .leading, spacing: 5) {
-                    Text(stop.name)
-                        .font(.title3)
-                        .bold()
-                    Text(String(format: "%0.02f km away", distance))
-                }
-                
-                Spacer()
-                
-                if (showMapButton) {
-                    Button {
-                        isShowingMapView = true
-                    } label: {
-                        Image(systemName: "map")
-                            .roundedBackground(color: .white)
-                            .font(.title)
-                            .bold()
-                            .foregroundColor(.black)
-                    }
-                }
+            // Stop name and distance
+            VStack(alignment: .leading, spacing: 5) {
+                Text(stop.name)
+                    .font(.title3)
+                    .bold()
+                Text(String(format: "%0.02f km away", distance))
             }
             
             Spacer()
+            
+            // Map button
+            if (showMapButton) {
+                Button {
+                    isShowingMapView = true
+                } label: {
+                    Image(systemName: "map")
+                        .roundedBackground(color: .white)
+                        .font(.title)
+                        .bold()
+                        .foregroundColor(.black)
+                }
+            }
         }
         .roundedBackground(color: .gray.opacity(0.1))
         .sheet(isPresented: $isShowingMapView) {
