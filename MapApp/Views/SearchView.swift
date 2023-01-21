@@ -56,10 +56,14 @@ struct SearchView: View {
             .scrollIndicators(.hidden)
             
             // Map
-            Map(coordinateRegion: $routesManager.locationManager.region, showsUserLocation: true, annotationItems: routesManager.currentRoute.stops) { stop in
+            Map(coordinateRegion: $routesManager.locationManager.region, showsUserLocation: true, annotationItems: searchLocationManager.searchedStops) { stop in
                 MapMarker(coordinate: CLLocationCoordinate2D(latitude: stop.location.coordinate.latitude, longitude: stop.location.coordinate.longitude))
             }
             .cornerRadius(25)
+            .if(searchIsFocused, content: { view in
+                view
+                    .frame(width: 0, height: 0)
+            })
         }
         .padding()
         .navigationBarBackButtonHidden(true)
